@@ -46,3 +46,27 @@ for(var i = 0; i < 100; i++){
   print(i);
 }
 ```
+
+#### 实现 add函数
+```
+add(1); // 1
+add(1)(2);  // 3
+add(1)(2)(3)； // 6
+add(1)(2)(3)(4)； // 10 
+
+// 以此类推
+```
+
+解答：
+```
+function add(a) {
+    function sum(b) { // 使用闭包
+    	a = a + b; // 累加
+    	return sum;
+    }
+    sum.toString = function() { // 重写toString()方法
+        return a;
+    }
+    return sum; // 返回一个函数
+}
+```
